@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_compass/flutter_compass.dart' show CompassEvent;
+//import 'package:flutter_compass/flutter_compass.dart' show CompassEvent;
 import 'package:flutter_map/plugin_api.dart';
 import 'package:flutter_map_location/flutter_map_location.dart';
 import 'package:flutter_map_location/src/location_controller.dart';
@@ -74,7 +74,7 @@ class _LocationLayerState extends State<LocationLayer>
     super.didChangeAppLifecycleState(state);
     switch (state) {
       case AppLifecycleState.paused:
-        _controller.unsubscribeCompass();
+        //_controller.unsubscribeCompass();
         _controller.unsubscribePosition();
         if (_serviceStatus.value == LocationServiceStatus.subscribed) {
           _serviceStatus.value = LocationServiceStatus.paused;
@@ -157,10 +157,10 @@ class _LocationLayerState extends State<LocationLayer>
       _serviceStatus.value = LocationServiceStatus.unsubscribed;
     });
 
-    await _controller.unsubscribeCompass();
+    /*await _controller.unsubscribeCompass();
     _controller.subscribeCompass((CompassEvent event) {
       _heading.value = event.heading;
-    });
+    });*/
 
     _serviceStatus.value = LocationServiceStatus.subscribed;
   }
